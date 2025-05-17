@@ -1,1 +1,1 @@
-# odin-rockGame
+We are going to make a rock, paper, scissor game which runs on console.
