@@ -1,0 +1,67 @@
+@font-face {
+    font-family:Custom font;
+    src: url(PressStart2P-Regular.ttf);
+}
+body{
+    background-color:midnightblue;
+    font-family:Custom font;
+}
+#main{
+    display: flex;
+    justify-content: center;
+    border: 2px solid red;
+    border-radius: 8px;
+    margin: 48px 650px;
+    padding: 18px;
+    font-size: 24px;
+    background-color: wheat;
+}
+.buttons{
+    display: flex;
+    justify-content: center;
+    gap: 90px;
+    margin: 120px 0;
+}
+button{
+    padding: 72px 32px;
+    border: 2px solid red;
+    border-radius: 32px;
+    font-size: 16px;
+    font-family:Custom font;
+    background-color: wheat;
+
+}
+.almost{
+    display: flex;
+    justify-content: center;
+    margin: 72px 0;
+    gap: 160px;
+}
+.box1{
+    display: flex;
+    flex-direction: column;
+    border: 2px solid red;
+    padding: 16px;
+    align-items: center;
+    border-radius: 16px;
+    justify-content: center;
+    background-color: wheat;
+}
+.box2{
+    display: flex;
+    flex-direction: column;
+    border: 2px solid red;
+    padding: 52px;
+    align-items: center;
+    border-radius: 16px;
+    justify-content: center;
+    background-color: wheat;
+}
+.result{
+    display: flex;
+    border: 2px solid red;
+    margin: 48px 700px;
+    padding: 28px;
+    border-radius: 30px;
+    background-color: wheat;    
+}
