@@ -1,96 +1,105 @@
-// let humanScore = 0
-// let computerScore = 0
+let humanSelection = ""
+let humanScore = 0
+let computerScore = 0
+let rounds = 0
+let maxRounds = 5
 
-// function play(){
+const choose = document.querySelectorAll("button")
+choose.forEach(button =>{
+    button.addEventListener("click",()=>{
+        if(rounds >= maxRounds || humanScore === 3 || computerScore === 3){
+            alert("Game over")
+            window.location.reload()
+        }
+        let input = button.textContent
+        choice(input)
+    })
+})
 
-// let cInput = Math.floor(Math.random() * 3)
-// function getComputerChoice(){
-//     if(cInput === 0){
-//         console.log("The computer choose Rock")
-//         cInput = "rock"
-//     }
-//     else if(cInput === 1){
-//         console.log("The computer choose Paper")
-//         cInput = "paper"
-//     }
-//     else if(cInput === 2){
-//         console.log("The computer choose Scissor")
-//         cInput = "scissors"
-//     }
-// }
+function choice(input){
+    humanSelection = input
+    play()
+    checkGameOver()
+}
 
-// let input = prompt("Enter your choice")
-// function getHumanChoice(){
-//     if(input.toLowerCase() === "rock"){
-//         console.log("You choose "+ input.toLowerCase())
-//     }
-//     else if(input.toLowerCase() === "paper"){
-//         console.log("You choose "+ input.toLowerCase())
-//     }
-//     else if(input.toLocaleLowerCase() === "scissors"){
-//         console.log("You choose "+ input.toLowerCase())
-//     }
-//     else{
-//         console.log("Invalid Input")
-//     }
+function play(){
+    rounds++
 
-// }
-// // console.log(getHumanChoice())
+let cInput = Math.floor(Math.random() * 3)
+function getComputerChoice(){
+    if(cInput==0) return "rock"
+    if(cInput==1) return "paper"
+    if(cInput==2) return "scissors"
+}
 
+function getHumanChoice() {
+    let choice = humanSelection.toLowerCase();
+    if (choice === "rock" || choice === "paper" || choice === "scissors") {
+        console.log("You chose " + choice);
+        return choice;
+    } else {
+        console.log("Invalid Input");
+        return null;
+    }
+}
 
-// function playRound(humanChoice, computerChoice){
-//    if(input === cInput){
-//     console.log("It was a tie")
-//    }
-//    else if(input === "rock" && cInput === "paper"){
-//     console.log("You Lose, Paper beats Rock")
-//     computerScore++
-//    }
-//    else if(input === "rock" && cInput === "scissors"){
-//     console.log("You Win, Rock beats Sciccors")
-//     humanScore++
-//    }
-//    else if(input === "paper" && cInput === "rock"){
-//     console.log("You Win, Paper beats Rock")
-//     humanScore++
-//    }
-//    else if(input === "paper" && cInput === "scissors"){
-//     console.log("You Lose, Scissor beats Paper")
-//     computerScore++
-//    }
-//    else if(input === "scissors" && cInput === "rock"){
-//     console.log("You Lose, Rock beats Scissor")
-//     computerScore++
-//    }
-//    else if(input === "scissors" && cInput === "paper"){
-//     console.log("You Win, Scissor beats Paper")
-//     humanScore++
-//    }    
+function playRound(humanChoice, computerChoice) {
+    if (humanChoice === computerChoice) {
+        console.log("It was a tie");
+        displayResult.textContent = " It's a tie.";
+    } else if (humanChoice === "rock" && computerChoice === "paper") {
+        console.log("You Lose, Paper beats Rock");
+        computerScore++;
+    } else if (humanChoice === "rock" && computerChoice === "scissors") {
+        console.log("You Win, Rock beats Scissors");
+        displayResult.textContent = " You win this round!";
+        humanScore++;
+    } else if (humanChoice === "paper" && computerChoice === "rock") {
+        console.log("You Win, Paper beats Rock");
+        displayResult.textContent = " You win this round!";
+        humanScore++;
+    } else if (humanChoice === "paper" && computerChoice === "scissors") {
+        console.log("You Lose, Scissors beats Paper");
+        displayResult.textContent = " Computer wins this round!"
+        computerScore++;
+    } else if (humanChoice === "scissors" && computerChoice === "rock") {
+        console.log("You Lose, Rock beats Scissors");
+        computerScore++;
+        displayResult.textContent = " Computer wins this round!"
+    } else if (humanChoice === "scissors" && computerChoice === "paper") {
+        console.log("You Win, Scissors beats Paper");
+        displayResult.textContent = " You win this round!";
+        humanScore++;
+    }
+    displayHumanScore.textContent = `Your Score : ${humanScore}`;
+    displayComputerScore.textContent = `Computer Score : ${computerScore}`
+}
 
-// }
+const humanChoice = getHumanChoice()
+const computerChoice = getComputerChoice(3)
 
-// const humanChoice = getHumanChoice()
-// const computerChoice = getComputerChoice(3)
+playRound(humanChoice, computerChoice)
 
-// playRound(humanChoice, computerChoice)
+}
 
-// }
+function checkGameOver() {
+    if (rounds >= maxRounds || humanScore === 3 || computerScore === 3) {
+        if (computerScore > humanScore) {
+            console.log("Computer wins!");
+            displayWinner.textContent = "Computer"
+        }
+        else if (humanScore > computerScore) {
+            console.log("Human wins!");
+            displayWinner.textContent = "Human"
+        }
+        else {
+            console.log("It's a tie!");
+            displayWinner.textContent = "Its a tie"
+        }
 
-// for(i=0;i<5;i++){
-//    play()
-//     console.log(computerScore)
-//     console.log(humanScore)
-//    if(computerScore===3 || humanScore === 3){
-//         break
-//     }
-// }
-
-// if(computerScore>humanScore){
-//     console.log("Computer wins!")
-// }
-// else if(humanScore>computerScore){
-//     console.log("Human wins!")
-// }
-// else{
-//     console.log("Its a tie!")
-// }
+    }
+}
+const displayHumanScore = document.querySelector("#hs")
+const displayComputerScore = document.querySelector("#cs")
+const displayWinner = document.querySelector("#win")
+const displayResult = document.querySelector(".result")
