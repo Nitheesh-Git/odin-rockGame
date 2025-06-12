@@ -8,6 +8,7 @@ body{
 }
 #main{
     display: flex;
+    width:550px;
     justify-content: center;
     border: 2px solid red;
     border-radius: 8px;
@@ -59,6 +60,7 @@ button{
 }
 .result{
     display: flex;
+    width: 450px;
     border: 2px solid red;
     margin: 48px 700px;
     padding: 28px;
