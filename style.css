@@ -5,6 +5,10 @@
 body{
     background-color:midnightblue;
     font-family:Custom font;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 #main{
     display: flex;
